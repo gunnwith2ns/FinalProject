@@ -1,3 +1,4 @@
+let dataChart;
 
 async function onclickLeft() {
     const pokemonName = document.getElementById("pokemonName").value.toLowerCase();
@@ -51,30 +52,44 @@ async function getPokemonData(name){
 }
 
 async function createChart () {
-    try {
-        const { hp, atk, def, speAtk, speDef, speed } = await getPokemonData();
+    let pokemon1 = document.getElementById("pokemonName").value.toLowerCase();
+    let pokemon2 = document.getElementById("pokemonName2").value.toLowerCase();
 
-        let ctx = document.getElementById('myChart').getContext('2d');
-        let chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Hp','Atk','Def','Special Atk', 'Special Def', 'Speed'],
-                datasets: [{
-                    label: pokemonName1, // Note: Define pokemonName1 somewhere in your code
-                    data: [hp, atk, def, speAtk, speDef, speed],
-                    backgroundColor: 'blue',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                tooltips: {
-                    mode: 'index'
+    if (pokemon1 != "" && pokemon2 != "") {
+        if (typeof dataChart !== 'undefined')
+            dataChart.destroy();
+
+        try {
+            let ctx = document.getElementById('myChart').getContext('2d');
+            const data1 = await getPokemonData(pokemon1);
+            const data2 = await getPokemonData(pokemon2);
+            delete data1.img;
+            delete data2.img;
+            dataChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    datasets: [{
+                        label: pokemon1.toUpperCase(), // Note: Define pokemonName1 somewhere in your code
+                        data: data1,
+                        backgroundColor: 'blue',
+                        borderWidth: 1
+                    }, 
+                    {
+                        label: pokemon2.toUpperCase(), // Note: Define pokemonName1 somewhere in your code
+                        data: data2,
+                        backgroundColor: 'red',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    barValueSpacing: 20,
+                    tooltips: {
+                        mode: 'index'
+                    }
                 }
-            }
-        });
-    } catch (error) {
-        console.log(error);
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
-// call chart data
-createChart();
