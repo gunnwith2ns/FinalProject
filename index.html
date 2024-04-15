@@ -9,22 +9,26 @@
     
     <title>Pokemon</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
-    <main>
-        <!--img scr="" alt="logo" class="logo"-->
+    <div class="center">
+        <img scr="pokemonLogo.png" alt="logo" class="logo"></img>
         <!--LEFT-->
         <div class="split left">
             <div class="centered">
                 <input type="text" placeholder="Enter Pokemon name" id="pokemonName">
-                <button onclick="onclickLeft()">Search</button><br>
-                <div class="card">
-                    <img alt="Pokemon Sprites" id="pokemonSprite" style="display: none">
+                <button onclick="onclickLeft()">Search</button><br><br>
+
+                <div class="card" style="align-items: center; justify-content: center;">
+                    <img onload="createChart()" alt="Pokemon Sprites" id="pokemonSprite" style="display: none">
                     <p>pokeDex</p>
                 </div>
-            </div>
-            <div>
-                <canvas id="myChart" ></canvas>
+
+                <!--<div>
+                    <canvas id="myChart" ></canvas>
+                </div>-->
             </div>
         </div>
 
@@ -32,16 +36,21 @@
         <div class="split right">
             <div class="centered">
                 <input type="text" placeholder="Enter Pokemon name" id="pokemonName2">
-                <button onclick="onclickRight()">Search</button><br>
-                <div class="card">
-                    <img alt="Pokemon Sprites" id="pokemonSprite2" style="display: none">
+                <button onclick="onclickRight()">Search</button><br><br>
+
+                <div class="card" style="align-items: center; justify-content: center;">
+                    <img onload="createChart()" alt="Pokemon Sprites" id="pokemonSprite2" style="display: none;">
                     <p>pokeDex</p>
                 </div>
+                
             </div>
         </div>
-
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+        <br><br>
+        <div class="statChart">
+            <canvas id="myChart" ></canvas>
+        </div>
+        
+    </div>
+    
 </body>
 </html>
