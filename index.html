@@ -14,22 +14,20 @@
 </head>
 <body>
     <div class="center">
+        <br><br>
         <img src="pokemonLogo.png" width=400px alt="logo" class="logo"></img>
         
         <!--LEFT-->
         <div class="split left">
             <div class="centered">
                 <input type="text" placeholder="Enter Pokemon name" id="pokemonName">
-                <button onclick="onclickLeft()">Search</button><br><br>
+                <button class="btn" onclick="onclickLeft()">Search</button><br><br>
 
                 <div class="card" style="align-items: center; justify-content: center;">
-                    <img onload="createChart()" alt="Pokemon Sprites" id="pokemonSprite" style="display: none">
-                    <p>pokeDex</p>
+                    <img onload="createStatChart(), createExpChart()" alt="Pokemon Sprites" id="pokemonSprite" style="display: none">
+                    <!-- <p>pokeDex</p> -->
                 </div>
 
-                <!--<div>
-                    <canvas id="myChart" ></canvas>
-                </div>-->
             </div>
         </div>
 
@@ -37,20 +35,28 @@
         <div class="split right">
             <div class="centered">
                 <input type="text" placeholder="Enter Pokemon name" id="pokemonName2">
-                <button onclick="onclickRight()">Search</button><br><br>
+                <button class="btn" onclick="onclickRight()">Search</button><br><br>
 
-                <div class="card" style="align-items: center; justify-content: center;">
-                    <img onload="createChart()" alt="Pokemon Sprites" id="pokemonSprite2" style="display: none;">
-                    <p>pokeDex</p>
+                <div class="card" style="align-items: center; justify-content: center;" id="pokemonContainer">
+                    <img onload="createStatChart(), createExpChart()" alt="Pokemon Sprites" id="pokemonSprite2" style="display: none;">
+                    <!-- <p>pokeDex</p> -->
                 </div>
-                
+
             </div>
         </div>
-        <br><br>
-        <div class="statChart">
-            <h2>Compare Base Stat</h2>
-            <canvas id="myChart" ></canvas>
+        <br>
+        <div class="VS">
+            <p>VS</p>
         </div>
+        <br>
+        <div class="allChart">
+            <h2>Compare Base Stat</h2>
+            <canvas id="statChart" ></canvas>
+            <br>
+            <h2>Compare Base experience, Weight, Height</h2>
+            <canvas id="expChart" ></canvas>
+        </div>
+        <!--อยากให้มีพื้นที่ตรงนี้อะ-->
         
     </div>
     
