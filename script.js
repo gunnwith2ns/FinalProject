@@ -1,4 +1,5 @@
 let dataChart;
+let data2Chart;
 
 async function onclickLeft() {
     const pokemonName = document.getElementById("pokemonName").value.toLowerCase();
@@ -6,6 +7,14 @@ async function onclickLeft() {
     let pokeImg = document.getElementById("pokemonSprite");
     pokeImg.src = response.img;
     pokeImg.style.display = "block";
+    card.className = 'card active'
+    /*
+    card.innerHTML =
+        `<div class="pokebox found">
+            <span class="closebox">x</span>
+            <h3 class="pokename">${pokemonName}</h3>
+        </div>`;
+    */
 }
 
 async function onclickRight() {
@@ -14,6 +23,7 @@ async function onclickRight() {
     let pokeImg = document.getElementById("pokemonSprite2");
     pokeImg.src = response.img;
     pokeImg.style.display = "block";
+    card.className = 'card active'
 }
 async function getPokemonData(name){
     try{
@@ -33,17 +43,22 @@ async function getPokemonData(name){
         const statSpeAtk = pokemonData.stats[3].base_stat
         const statSpeDef = pokemonData.stats[4].base_stat
         const statSpeed = pokemonData.stats[5].base_stat
+        const baseExp = pokemonData.base_experience
+        const height = pokemonData.height
+        const weight = pokemonData.weight
+
         return {
             img: pokemonData.sprites.front_default,
-            hp: statHp,
-            atk: statAtk,
-            def: statDef,
-            speAtk: statSpeAtk,
-            speDef: statSpeDef,
-            speed: statSpeed
+            Hp: statHp,
+            Atk: statAtk,
+            Def: statDef,
+            Special_Atk: statSpeAtk,
+            Special_Def: statSpeDef,
+            Speed: statSpeed,
+            Base: {Base_experience: baseExp, Weight: weight, Height: height}
         };
         //console.log(pokemonData.stats[0].base_stat)
-        //console.log(hp)
+        //console.log(Hp)
         
     }
     catch(error){
@@ -51,7 +66,7 @@ async function getPokemonData(name){
     }
 }
 
-async function createChart () {
+async function createStatChart () {
     let pokemon1 = document.getElementById("pokemonName").value.toLowerCase();
     let pokemon2 = document.getElementById("pokemonName2").value.toLowerCase();
 
@@ -60,28 +75,77 @@ async function createChart () {
             dataChart.destroy();
 
         try {
-            let ctx = document.getElementById('myChart').getContext('2d');
+            let ctx = document.getElementById('statChart').getContext('2d');
             const data1 = await getPokemonData(pokemon1);
             const data2 = await getPokemonData(pokemon2);
             delete data1.img;
             delete data2.img;
+            delete data1.Base;
+            delete data2.Base;
+            //console.log(data1);
+            //console.log(data2);
             dataChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     datasets: [{
                         label: pokemon1.toUpperCase(), // Note: Define pokemonName1 somewhere in your code
                         data: data1,
-                        backgroundColor: 'blue',
+                        backgroundColor: 'rgba(89, 213, 224, 1)',
                         borderWidth: 1
                     }, 
                     {
                         label: pokemon2.toUpperCase(), // Note: Define pokemonName1 somewhere in your code
                         data: data2,
-                        backgroundColor: 'red',
+                        backgroundColor: 'rgba(244, 83, 138, 1)',
                         borderWidth: 1
                     }]
                 },
                 options: {
+                    barValueSpacing: 20,
+                    tooltips: {
+                        mode: 'index'
+                    }
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+async function createExpChart () {
+    let pokemon1 = document.getElementById("pokemonName").value.toLowerCase();
+    let pokemon2 = document.getElementById("pokemonName2").value.toLowerCase();
+
+    if (pokemon1 != "" && pokemon2 != "") {
+        if (typeof data2Chart !== 'undefined')
+            data2Chart.destroy();
+
+        try {
+            let ctx = document.getElementById('expChart').getContext('2d');
+            const data1 = await getPokemonData(pokemon1);
+            const data2 = await getPokemonData(pokemon2);
+
+            //onsole.log(data1.Base);
+            //console.log(data2.Base);
+            data2Chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    datasets: [{
+                        label: pokemon1.toUpperCase(), // Note: Define pokemonName1 somewhere in your code
+                        data: data1.Base,
+                        backgroundColor: 'rgba(245, 221, 97, 1)',
+                        borderWidth: 1
+                    }, 
+                    {
+                        label: pokemon2.toUpperCase(), // Note: Define pokemonName1 somewhere in your code
+                        data: data2.Base,
+                        backgroundColor: 'rgba(250, 163, 0, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    //indexAxis: 'y',
                     barValueSpacing: 20,
                     tooltips: {
                         mode: 'index'
