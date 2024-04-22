@@ -7,14 +7,6 @@ async function onclickLeft() {
     let pokeImg = document.getElementById("pokemonSprite");
     pokeImg.src = response.img;
     pokeImg.style.display = "block";
-    card.className = 'card active'
-    /*
-    card.innerHTML =
-        `<div class="pokebox found">
-            <span class="closebox">x</span>
-            <h3 class="pokename">${pokemonName}</h3>
-        </div>`;
-    */
 }
 
 async function onclickRight() {
@@ -23,7 +15,6 @@ async function onclickRight() {
     let pokeImg = document.getElementById("pokemonSprite2");
     pokeImg.src = response.img;
     pokeImg.style.display = "block";
-    card.className = 'card active'
 }
 async function getPokemonData(name){
     try{
