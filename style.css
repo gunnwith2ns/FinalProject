@@ -1,25 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 body {
-  background: linear-gradient(rgb(64, 162, 227) 1%, rgb(246, 245, 242) 35%);
+  background: linear-gradient(rgb(78, 177, 243) 1% , rgb(246, 245, 242) 35% );
   background-color: rgb(246, 245, 242);
   background-repeat: no-repeat;
 }
 input {
   padding: 0.3rem;
-  margin: 0 0 30px 10px;
+  width: 200px;
+  margin: 10px 0px;
   border: 0.5px solid #0e1238;
   border-radius: 0.9rem;
   /* font-family: ; */
   }
+.search {
+  position: relative;
+  top: 50px;
+}
 button.btn{
   padding: 0.8rem;
+  width: 250px;
   background: #1679AB;
   color: #fff;
   outline: none;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border-radius: 0.9rem;
   font-family: "Oswald", sans-serif;
 }
@@ -80,25 +86,22 @@ button.btn:hover{
   transition: box-shadow 0.5s;
   box-shadow: 0 5px 20px rgba(1, 45, 128, 0.5);
 }
-/*
-.pokebox.found .pokename{
-  text-transform: capitalize;
-  font-size: 1.2rem;
-  line-height: 1;
-  letter-spacing: 3px;
-  margin-bottom: .5rem;
- }
- */
 .allChart{
   position: relative;
-  top: 50px;
   font-family: "Oswald", sans-serif;
   color: rgb(8, 85, 167);
 }
+.pokeball {
+  position: relative;
+  top: 250px;
+}
+.pokeball img{
+  width: 70px;
+}
 .VS{
   position: relative;
-  top: 100px;
-  color: rgb(178, 16, 16);
+  top: 40px;
+  color: rgb(225, 52, 52);
   font-size: 100px;
   font-weight: bold;
   z-index: -1;
