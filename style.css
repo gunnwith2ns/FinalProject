@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 body {
-  background: linear-gradient(rgb(78, 177, 243) 1%, rgb(246, 245, 242) 35% );
-  background-color: rgb(246, 245, 242);
+  background: linear-gradient(rgb(96, 191, 255) 1% , rgb(255, 250, 240) 35% );
+  background-color: rgb(255, 250, 240);
   background-repeat: no-repeat;
 }
 input {
@@ -93,7 +93,7 @@ button.btn:hover{
 }
 .pokeball {
   position: relative;
-  top: 250px;
+  top: 70px;
 }
 .pokeball img{
   width: 70px;
