@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 body {
-  background: linear-gradient(rgb(78, 177, 243) 1% , rgb(246, 245, 242) 35% );
+  background: linear-gradient(rgb(78, 177, 243) 1%, rgb(246, 245, 242) 35% );
   background-color: rgb(246, 245, 242);
   background-repeat: no-repeat;
 }
