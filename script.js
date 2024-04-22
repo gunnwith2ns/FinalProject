@@ -35,8 +35,8 @@ async function getPokemonData(name){
         const statSpeDef = pokemonData.stats[4].base_stat
         const statSpeed = pokemonData.stats[5].base_stat
         const baseExp = pokemonData.base_experience
-        const height = pokemonData.height
-        const weight = pokemonData.weight
+        const height = pokemonData.height*10
+        const weight = pokemonData.weight/10
 
         return {
             img: pokemonData.sprites.front_default,
@@ -46,7 +46,7 @@ async function getPokemonData(name){
             Special_Atk: statSpeAtk,
             Special_Def: statSpeDef,
             Speed: statSpeed,
-            Base: {Base_experience: baseExp, Weight: weight, Height: height}
+            Base: {Base_experience: baseExp, Weight_kg: weight, Height_cm: height}
         };
         //console.log(pokemonData.stats[0].base_stat)
         //console.log(Hp)
